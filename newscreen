@@ -1,0 +1,1 @@
+screen -D -R -S alex.ehrnschwender -c ~/screenrc

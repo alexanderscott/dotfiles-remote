@@ -1,0 +1,3 @@
+/*jslint node: true, undef: true, unused: false, globalstrict: false, smarttabs: true, laxbreak: true, laxcomma: true, indent: 4, newcap: true, sub: true, asi: true, es5: true, eqnull: false, eqeqeq: false, trailing: true */
+/*global module, require, GLOBAL, console, Buffer, process, exports, JSON */
+/* vim: ts=4 sw=4 et set ft=javascript: */

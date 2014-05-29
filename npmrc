@@ -1,0 +1,9 @@
+_auth = YWxleGFuZGVyc2NvdHQ6PXc4d21tUHA=
+email = alex@crunchdevelopment.com
+
+[_token]
+AuthSession = YWxleGFuZGVyc2NvdHQ6NTI5NTgwNTY6696dayALkCLyFArQbqx3wFgK3X4
+version = 1
+expires = 1385565430389
+path = /
+httponly = true
