@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash 
 
 PLATFORM=ubuntu  EMAIL=  CONTEXT=local 
 
@@ -93,7 +93,7 @@ fi
 if [[ $PLATFORM == ubuntu ]]
 then
     #   apt-get install ...
-    sudo apt-get install htop vim git fail2ban cpulimit ftp gzip openssh-server openssh-client rsync sed grep traceroute build-essential 
+    sudo apt-get install htop vim git fail2ban cpulimit ftp gzip openssh-server openssh-client rsync sed grep traceroute build-essential zip unzip
 
     # Web server, db packages
     sudo apt-get install nginx squid3 ruby-mysql 
