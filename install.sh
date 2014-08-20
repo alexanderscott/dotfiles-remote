@@ -79,57 +79,25 @@ then
     git config --global user.email $EMAIL
 fi
 
-if [[ $CONTEXT == vm ]]
-then
-    rm ~/.bash_prompt 2> /dev/null ; ln -s ~/.dotfiles/bash_prompt_vm ~/.bash_prompt
-fi
-
-if [[ $CONTEXT == remote ]]
-then
-    rm ~/.bash_prompt 2> /dev/null ; ln -s ~/.dotfiles/bash_prompt_remote ~/.bash_prompt
-fi
-    
-
-if [[ $PLATFORM == ubuntu ]]
-then
-    #   apt-get install ...
-    sudo apt-get install htop vim git fail2ban cpulimit ftp gzip openssh-server openssh-client rsync sed grep traceroute build-essential 
-
-    # Web server, db packages
-    sudo apt-get install nginx squid3 ruby-mysql 
-    sudo apt-get install sqlite3 mysql-server zip wget curl redis-server screen tmux 
-    sudo apt-get install php5-cgi php5-fpm php5-mysql php5
-    sudo apt-get install python-pip python-dev build-essential 
-
-fi
-
-#if [[ $PLATFORM == centos ]]
+#if [[ $CONTEXT == vm ]]
 #then
-#   yum install ...
-#end
+    rm ~/.bash_prompt 2> /dev/null ; ln -s ~/.dotfiles/bash_prompt_vm ~/.bash_prompt
+#fi
 
-if [[ $PLATFORM == mac || $PLATFORM == osx ]]
-then
-
-    # install xcode CLI
-    gcc
-    #xcode-select --install
-    xcode-select -p
-
-    # Install homebrew 
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-
-    # Install brew packages
-    brew install nodejs editorconfig libyaml htop masscan ctags mate macvim thrift imagesnap libyaml awk sed 
-    brew install aws rsync s3fs
-
-    # Atom.io editor prefs
-    mv ~/.atom ~/.atom.old 2> /dev/null; ln -s ~/.dotfiles/atom ~/.atom
+#if [[ $CONTEXT == remote ]]
+#then
+    rm ~/.bash_prompt 2> /dev/null ; ln -s ~/.dotfiles/bash_prompt_remote ~/.bash_prompt
+#fi
     
-    # iTerm2
-    curl -O http://iterm2.com/downloads/stable/iTerm2_v1_0_0.zip
 
-fi
+#   apt-get install ...
+sudo apt-get install htop vim git fail2ban cpulimit ftp gzip openssh-server openssh-client rsync sed grep traceroute build-essential 
+
+# Web server, db packages
+sudo apt-get install -y nginx squid3 ruby-mysql 
+sudo apt-get install -y sqlite3 mysql-server zip wget curl redis-server screen tmux 
+sudo apt-get install -y php5-cgi php5-fpm php5-mysql php5
+sudo apt-get install -y python-pip python-dev build-essential 
 
 
 # install aws tools
