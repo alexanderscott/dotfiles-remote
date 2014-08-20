@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash 
 
 PLATFORM=ubuntu  EMAIL=  CONTEXT=local 
 
@@ -81,7 +81,7 @@ fi
 
 #if [[ $CONTEXT == vm ]]
 #then
-    rm ~/.bash_prompt 2> /dev/null ; ln -s ~/.dotfiles/bash_prompt_vm ~/.bash_prompt
+    #rm ~/.bash_prompt 2> /dev/null ; ln -s ~/.dotfiles/bash_prompt_vm ~/.bash_prompt
 #fi
 
 #if [[ $CONTEXT == remote ]]
@@ -90,8 +90,7 @@ fi
 #fi
     
 
-#   apt-get install ...
-sudo apt-get install htop vim git fail2ban cpulimit ftp gzip openssh-server openssh-client rsync sed grep traceroute build-essential 
+sudo apt-get install -y htop vim git fail2ban cpulimit ftp curl gzip openssh-server openssh-client rsync sed grep traceroute build-essential nmap
 
 # Web server, db packages
 sudo apt-get install -y nginx squid3 ruby-mysql 
