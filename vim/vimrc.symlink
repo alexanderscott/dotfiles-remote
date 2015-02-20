@@ -1,0 +1,404 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" turn on syntax highlighting
+syntax on
+
+" turn on line numbering
+set number
+
+" Make backspace behave in a sane manner.
+set backspace=indent,eol,start
+
+
+" Enable file type detection and do language-dependent indenting.
+filetype plugin indent on
+
+
+" Setting up Vundle - the vim plugin bundler
+    let iCanHazVundle=1
+    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+
+    if !filereadable(vundle_readme)
+        echo "Installing Vundle.."
+        echo ""
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+        let iCanHazVundle=0
+    endif
+    
+    " vundle runtimepath
+    set rtp+=~/.vim/bundle/vundle/
+
+    call vundle#rc()
+    Bundle 'gmarik/vundle'
+
+    " version control
+
+    " tools & navigation
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'ervandew/supertab'
+    Bundle 'majutsushi/tagbar'
+    Bundle 'bling/vim-airline'
+    Bundle 'junegunn/vim-easy-align'
+    Bundle 'Lokaltog/vim-easymotion'
+
+    " allows for plugins to access .
+    Bundle 'tpope/vim-repeat'       
+    Bundle 'tpope/vim-surround'
+
+    Bundle 'vimoutliner/vimoutliner'
+
+    "Bundle 'tpope/vim-abolish'
+    "Bundle 'tpope/vim-unimpaired'
+    "Bundle 'tpope/vim-ragtag'
+    "Bundle 'kana/vim-vspec'
+
+    " language syntax
+    Bundle 'scrooloose/syntastic'
+    "Bundle 'tpope/vim-commentary'
+    "Bundle 'tomtom/tcomment_vim'
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'jistr/vim-nerdtree-tabs'
+    "Bundle 'Shougo/neocomplcache.vim'
+	"Bundle 'tComment'
+	Bundle 'alexanderscott/vim-markdown'
+
+        " scala
+        Bundle 'derekwyatt/vim-scala.git'
+		Bundle 'ktvoelker/sbt-vim'
+		Bundle 'sprsquish/thrift.vim'
+		Bundle 'mpollmeier/vim-scalaConceal'
+
+        " javascript
+        Bundle 'jelera/vim-javascript-syntax'
+        Bundle 'pangloss/vim-javascript'
+        Bundle 'nathanaelkane/vim-indent-guides'
+        "Bundle 'Valloric/YouCompleteMe'
+        Bundle 'marijnh/tern_for_vim'
+        "Bundle 'othree/javascript-libraries-syntax.vim'
+        Bundle 'tav/nodelint'
+        "Bundle 'maksimr/vim-jsbeautify'
+        Bundle 'tpope/vim-coffee-script'
+        Bundle 'moll/vim-node'
+        
+
+        " ruby
+        Bundle 'vim-ruby/vim-ruby'
+        Bundle 'tpope/vim-rake'
+        Bundle 'tpope/vim-haml'
+
+        " adds automatic 'end', 'do', 'if'
+        "Bundle 'tpope/vim-endwise'     
+
+        " html & markup
+        Bundle 'digitaltoad/vim-jade'
+        Bundle 'mustache/vim-mustache-handlebars'
+        Bundle 'junegunn/goyo.vim'
+
+
+    " framework support
+    "Bundle 'elixir-lang/vim-elixir'
+
+
+    " colorschemes
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'chriskempson/base16-vim'
+    Bundle 'spf13/vim-colors'
+    Bundle 'nanotech/jellybeans.vim'
+    Bundle 'tomasr/molokai'
+    Bundle 'Lokaltog/vim-distinguished'
+
+
+    " reference
+    "Bundle 'vim-scripts/vimwiki'
+    "Bundle 'Keithbsmiley/investigate.vim'
+
+
+    if iCanHazVundle == 0
+        echo "Installing Bundles, please ignore key map error messages"
+        echo ""
+        :BundleInstall
+    endif
+" Setting up Vundle - the vim plugin bundler end
+
+
+" GENERAL SETTINGS {
+
+	set nobackup                   " Disable backup
+	set noswapfile                 " Disable swapfile
+
+    set clipboard+=unnamed         " yank and paste between vim instances
+
+	if has('mouse')
+        set mouse=a                 " Enable mouse in all modes
+	endif
+
+	if !has('gui')
+		set term=$TERM              " Make arrow and other keys work
+	endif
+
+    if has('cmdline_info')
+        set ruler                   " show the ruler
+        set showcmd                 " show partial commands in status line and
+    endif
+
+    set exrc                        " Enable per-directory .vimrc files and 
+    set secure                      " disable unsafe commands in per-directory .vimrc
+    set esckeys                     " Allow cursor keys in insert mode
+    set ttyfast                     " Optimize for fast terminal connections
+	"set history=1000
+    set noerrorbells                " Disable error bells
+    set shortmess=atI               " Don’t show the intro message when starting Vim
+	set virtualedit=onemore         " allow for cursor beyond last character
+	"set hidden                      " allow buffer switching without saving
+    set tabpagemax=10               " only show 15 tabs
+    set showmode                    " display the current mode
+    set cursorline                  " highlight current line
+    set backspace=indent,eol,start  " backspace for dummies
+	set nojoinspaces
+    set linespace=0                 " No extra spaces between rows
+    "set gdefault                    " Add the g flag to search/replace by default
+    set number                      " Line numbers on
+    set showmatch                   " show matching brackets/parenthesis
+    set incsearch                   " find as you type search
+    set hlsearch                    " highlight search terms
+    set winminheight=0              " windows can be 0 line high
+    set ignorecase                  " case insensitive search
+    set smartcase                   " case sensitive when uc present
+    set wildmenu                    " show list instead of just completing
+    set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+    set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
+    set scrolljump=10                " lines to scroll when cursor leaves screen
+    set scrolloff=5                 " minimum lines to keep above and below cursor
+    set nofoldenable                " disable folding
+	set laststatus=2
+	set listchars=tab:▸\ ,eol:¬
+    set guitablabel=%t              "show only filename in buffer tab
+    set binary                      " no new end of line created
+
+	" Formatting
+	set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
+	set expandtab
+    
+    set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+"}
+
+" KEY MAPPINGS {
+	let mapleader = ","			" <leader> is set to comma
+
+    " Insert line without going into insert mode
+    "nnoremap <S-Enter> o<Esc>
+    nnoremap <leader>o o<Esc>
+    nnoremap <S-Enter> o<Esc>
+    "nnoremap jo o<Esc>
+
+    "dd and x do not cut to clipboard
+    nnoremap dd "_dd<CR>
+    nnoremap x "_x
+    vnoremap x "_x
+
+    "paste without updating register
+    vnoremap p "_dP
+    "vnoremap p "_dP
+
+    " Insert after tab
+    nnoremap <Tab> <Tab>i
+
+	" Quick toggles
+    nmap <silent> <leader>l :set list!<CR>
+    nmap <silent> <leader>w :set wrap!<CR>
+    nmap <silent> <buffer> <leader>s :set spell!<CR>
+    nmap <silent> <leader>n :silent :nohlsearch<CR>
+
+    " Toggle paste mode on and off
+    "map <leader>pp :setlocal paste!<cr>
+    "nnoremap <leader>pp :set invpaste paste?<CR>
+    set pastetoggle=<leader>pp
+
+    vnoremap <silent> <leader>a :EasyAlign<CR>
+	" Commands to quickly set >1 option in one go {{{2
+	"command! -nargs=* Wrap set wrap linebreak nolist
+	"command! -nargs=* Maxsize set columns=1000 lines=1000
+
+    nmap <leader>tt :TagbarToggle<CR>
+    let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+
+    " Wrapped lines goes down/up to next row, rather than next line in file.
+    nnoremap j gj
+    nnoremap k gk
+
+    " Yank from the cursor to the end of the line, to be consistent with C and D.
+    nnoremap Y y$
+
+    "Clearing highlighted search
+    nmap <silent> <leader>/ :nohlsearch<CR>
+
+    " For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+
+    " visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
+
+
+    " Switch between buffers
+  	inoremap  <C-l> :tabn<CR>
+  	vnoremap  <C-l> :tabn<CR>
+  	nnoremap  <C-l> :tabn<CR>
+    
+	inoremap  <C-h> :tabp<CR>
+	nnoremap  <C-h> :tabp<CR>
+	vnoremap  <C-h> :tabp<CR>
+
+	inoremap  <C-n> :tabnew<CR>
+	vnoremap  <C-n> :tabnew<CR>
+	nnoremap  <C-n> :tabnew<CR>
+
+    " copy/paste with control
+    vnoremap <C-x> :!pbcopy<CR>
+    vnoremap <C-c> :w !pbcopy<CR>
+
+    " Goyo distraction free writing
+    nnoremap <leader>gy :Goyo<CR>
+
+" }
+
+
+
+
+" VIM UI {
+    set background=dark
+     "color ir_black
+    "color aptana_studio
+    "color lucius
+    "color Tomorrow-Night
+    "colorscheme base16-ocean
+    colorscheme jellybeans
+    "colorscheme slate
+
+    " SASS recognition
+    "let g:ruby_path = system('rvm current')
+
+    " Make vsplits open to the right and splits open below
+    set splitright
+    set splitbelow
+    
+    "Capital W/Q same as w/q in command mode
+    cnoreabbrev W w
+    cnoreabbrev Q q
+" }
+
+
+
+" PLUGINS (bundles) {
+	" Ctlr-P.vim {
+        let g:ctrlp_map = '<c-p>'
+        let g:ctrlp_cmd = 'CtrlP'
+		let g:ctrlp_jump_to_buffer = 0
+		let g:ctrlp_working_path_mode = 0
+        set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+        set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+        let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+	" }
+
+    " Vim CSS Colors {
+        let g:cssColorVimDoNotMessMyUpdatetime = 1
+    " }
+
+	" NerdTree.vim {
+		map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+		imap <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+
+		" map <C-e> :NERDTreeToggle<CR>
+		map <leader>e :NERDTreeFind<CR>
+		nmap <leader>nt :NERDTreeFind<CR>
+
+		" Remove warnings
+		let g:NERDShutUp=1
+		let b:match_ignorecase = 1
+
+		let NERDTreeShowBookmarks=1
+		"let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+		let NERDTreeChDirMode=1
+		let NERDTreeQuitOnOpen=1
+		let NERDTreeMouseMode=2
+		let NERDTreeShowHidden=1
+		let NERDTreeKeepTreeInNewTab=0
+		let NERDTreeMinimalUI=1 " Disables display of the 'Bookmarks' label and 'Press ? for help' text.
+		let g:nerdtree_tabs_open_on_gui_startup=1
+
+        " change NERDTree colors
+        hi Directory guifg=#FF0000 ctermfg=yellow      
+        "hi Directory guifg=#FF0000 ctermfg=blue    
+
+		" map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+
+	" }
+
+	" Syntastic {
+         let g:syntastic_enable_signs=1
+         let g:syntastic_auto_jump=0
+         let g:syntastic_javascript_checkers = ['jshint']
+	" }
+
+
+" GUI SETTINGS {
+    " GVIM- (here instead of .gvimrc)
+    if has('gui_running')
+        set guioptions-=T           " remove the toolbar
+        set lines=40                " 40 lines of text instead of 24,
+        if has("gui_gtk2")
+            "set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 16,Courier\ New\ Regular\ 14
+        else
+            "set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h16,Courier\ New\ Regular:h14
+        endif
+        if has('gui_macvim')
+            set transparency=5          " Make the window slightly transparent
+        endif
+    else
+        if &term == 'xterm' || &term == 'screen'
+            set t_Co=256                 " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+        endif
+        "set term=builtin_ansi       " Make arrow and other keys work
+    endif
+" }
+
+
+
+" Use local vimrc if available {
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
+" }
+
+" Use local gvimrc if available and gui is running {
+    if has('gui_running')
+        if filereadable(expand("~/.gvimrc.local"))
+            source ~/.gvimrc.local
+        endif
+    endif
+" }
+
+
+" Automatic commands
+if has("autocmd")
+	"filetype on
+
+    autocmd BufRead,BufNewFile *.json setfiletype=json syntax=javascript     " Treat json files as js
+    autocmd FileType ruby,haml,eruby,yaml,lua,scss,sass,coffee set ai sw=2 sts=2 et
+    autocmd FileType javascript set sw=4 sts=4 et
+
+    autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif      " Close NERDTree if only buffer remaining is NERDTree
+
+    autocmd BufNewFile,BufRead *.lua set sw=2 sts=2 et
+    autocmd BufNewFile,BufRead *.txt set wrap textwidth=120
+
+    autocmd Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim 
+endif
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ "${rvm_ruby_string}" =~ "jruby" ]]
+then
+  export JAVACMD=`which drip`
+  export DRIP_INIT_CLASS=org.jruby.main.DripMain
+
+  # settings from: https://github.com/jruby/jruby/wiki/Improving-startup-time
+  export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify" 
+fi

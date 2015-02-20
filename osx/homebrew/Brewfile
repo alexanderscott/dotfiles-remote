@@ -1,0 +1,62 @@
+update
+
+#upgrade
+
+# Install basics
+install grc
+install coreutils
+install spark
+
+# Install Python
+install python
+install python3
+install pyenv
+
+# Install Ruby
+install rbenv
+#install rvm
+
+# Install Node 
+install nodejs
+
+# database
+install mongodb
+install redis-server
+
+# open in github
+install gh
+
+# vim
+install vim
+install mvim
+
+# git
+install git
+install tig
+
+# colorful diffs (alias diff='colordiff -u')
+install colordiff
+
+install tmux
+
+# Install OSX Apps
+#tap phinze/cask
+#install brew-cask
+#tap caskroom/versions
+
+#cask install caffeine
+#cask install firefox
+#cask install google-drive
+#cask install google-chrome
+#cask install spotify
+#cask install vlc
+#cask install virtualbox
+#cask install xquartz
+#cask install google-hangouts
+#cask install istat-menus
+#cask install flux
+#cask install dash
+#cask install vagrant
+#cask install postgres
+#cask install intellij-idea-ce
+#cask install iterm2

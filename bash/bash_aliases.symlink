@@ -1,0 +1,94 @@
+### ALIASES ###
+###############
+
+# DEV ALIASES #
+alias json-prettify='python -mjson.tool'
+
+# Remove .DS_Store files
+alias rm-dsstores='find ./ -type f | grep .DS_Store | xargs rm'
+
+
+# POSTGRES ALIASES #
+alias pg-start='postgres -D /usr/local/var/postgres'
+alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
+# Lazy aliases
+alias l="ls -l"
+alias la="ls -lah"
+alias ..="cd .."
+alias tree="tree -C"
+alias trls="tree -C | less -R"  # -C outputs colour, -R makes less understand color
+#alias mode="(set -o | grep emacs.*on >/dev/null 2>&1 && echo 'emacs mode' || echo 'vi mode')"
+
+# SVN aliases
+alias svnadd="svn st | grep '^\?' | awk '{print $2}' | xargs svn add"
+alias svnrmd="svn st | grep '^\!' | awk '{print $2}' | xargs svn rm"
+
+# git aliases
+# http://titusd.co.uk/2010/08/29/use-g-as-an-alias-for-git-without-losing-autocompletion
+alias g="git"
+alias gs="git status"
+alias gbv="git branch -v"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+alias gpd="git push origin HEAD:refs/for/devel"
+alias gcd="git checkout devel"
+alias gp="git pull"
+alias gbl="git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'"
+alias git-list-submodules="grep path .gitmodules | sed 's/.*= //'"
+
+# Vim aliases
+alias rvim="mvim --remote-silent "
+
+# Show me the size (sorted) of only the folders in this directory
+alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
+
+alias 644.='find . -type f -exec chmod 644 {} \;'
+alias print-colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
+
+# test internet connection speed
+alias ispeed='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
+
+# get file sizes in mb
+alias ls-mb='ls -l --block-size=1M'
+
+# point ctags to homebrew version
+alias ctags='/usr/local/bin/ctags'
+
+# Vagrant shortcuts
+alias vh='vagrant halt'
+alias vsus='vagrant suspend'
+alias vssh='vagrant ssh'
+alias vs='vagrant ssh'
+alias vu='vagrant up'
+alias vup='vagrant up'
+alias vagrant-restart='vagrant reload'
+
+alias ll='ls -lah'
+alias gg='git status -s'
+
+
+#sudo /Library/StartupItems/VirtualBox/VirtualBox restart
+alias vagrant-restart='sudo /Library/StartupItems/VirtualBox/VirtualBox restart'
+
+
+alias find-replace="find . -type f -name '*.*' -exec sed -i '' s/{print $2}/{print $3}/ {} +"
+
+alias filesizes='du -ksh */ | sort -nr'
+
+# get file sizes in MB
+alias ls-mb='ls -l --block-size=1M'
+
+alias find-large-files="du -k | sort -n | perl -ne 'if ( /^(\d+)\s+(.*$)/){$l=log($1+.1);$m=int($l/log(1024)); printf  (\"%6.1f\t%s\t%25s  %s\n\",($1/(2**(10*$m))),((\"K\",\"M\",\"G\",\"T\",\"P\")[$m]),\"*\"x (1.5*$l),$2);}'"
+# Find and sort by large files recursively
+alias sort-large-files='find -type f -printf "%s %p\n" |sort -nr | head'
+
+alias git-push-heroku='git push heroku +HEAD:master' 
+
+alias list-apt-packages='dpkg --get-selections | grep -v deinstall'
+
+alias tmux='TERM=xterm-256color tmux -2'
+alias tmuxinator='TERM=xterm-256color tmuxinator'
+alias mux='TERM=xterm-256color mux'
+alias term-mux='tmux -CC'
+alias tmux-cc='tmux -CC'
